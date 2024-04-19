@@ -1,0 +1,10 @@
+npm init
+npm i express
+npm i mongoose
+npm i ejs
+npm i method-override
+
+## Before starting this project make sure you have started the mongoDB shell 
+To start mongoDB Shell use command --> mongosh (first select database "wanderLust")
+
+npm i ejs-mate
