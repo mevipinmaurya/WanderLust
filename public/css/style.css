@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container{
+    flex: 1;
+}
+
+
+/* ********************************** Navbar ********************************** */
+.navbar {
+    height: 5rem;
+    background: #fff;
+}
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+}
+
+
+
+/* ************************************* Footer ********************************/
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-links,
+.f-info-socials {
+    width: 100%;
+}
+
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: #fe424d;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* ********************************* Cards ********************************************* */
+.card {
+    border: none !important;
+    margin-bottom: 2rem !important;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text p{
+    font-weight: 400 !important;
+}
+
+.listings-links{
+    text-decoration: none;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background: #fff;
+}
+
+
+/* ********************************************* New Page **************************************** */
+
+.add-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+label{
+    font-weight: 650 !important;
+}
+textarea{
+    resize: none !important;
+}
+
+
+
+
+/* ********************************************* Show Page **************************************** */
+
+.show-img{
+    max-height: 40vh;
+    object-fit: cover;
+}
+.d-flex{
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex !important;
+    /* justify-content: space-evenly; */
+    align-items: center;
+}
+.d-flex button {
+    margin-right: 10px;
+}
+.edit-btn{
+    background-color: #ffcc00 !important;
+    border: none !important;
+}
+.del-btn{
+    background-color: darkred !important;
+    border: none !important;
+}
