@@ -8,3 +8,5 @@ npm i method-override
 To start mongoDB Shell use command --> mongosh (first select database "wanderLust")
 
 npm i ejs-mate
+
+npm i joi   (for Server side validation schema not for mongoose schema)
