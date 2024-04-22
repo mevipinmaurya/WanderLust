@@ -6,9 +6,11 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
+const Review = require("./models/review.js");
 
 // For server side validation (joi)
 const listingSchema = require("./schema.js");
+const reviewSchema = require("./schema.js");
 
 const path = require("path");
 
@@ -47,8 +49,20 @@ async function main() {
 // })
 
 
+// For schema validation
 const validateListing = (req, res, next) => {
     let result = listingSchema.validate(req.body);
+    console.log(result);
+    if (result.error) {
+        throw new ExpressError(400, result.error);
+    } else {
+        next();
+    }
+}
+
+// For review validation
+const validateReview = (req, res, next) => {
+    let result = reviewSchema.validate(req.body);
     console.log(result);
     if (result.error) {
         throw new ExpressError(400, result.error);
@@ -136,10 +150,44 @@ app.delete("/listings/:id", wrapAsync(async (req, res) => {
 }))
 
 
+// Review 
+// Post Review route
+app.post("/listings/:id/review", validateReview, wrapAsync(async (req, res) => {
+    let { id } = req.params;
+    let listing = await Listing.findById(id);
+    let { rating: newRating, comment: newComment } = req.body;
+    let newReview = new Review({
+        comment: newComment,
+        rating: newRating,
+    })
+
+    listing.reviews.push(newReview);
+
+    await newReview.save();
+    await listing.save();
+
+    // console.log("Review saved");
+    // res.send("Review Saved");
+
+    res.redirect(`/listings/${id}`);
+}))
+
+
+// Delete Review Route
+app.delete("/listings/:id/reviews/:reviewId", wrapAsync(async (req, res) => {
+    let { id, reviewId } = req.params;
+
+    await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+    await Review.findByIdAndDelete(reviewId);
+
+    res.redirect(`/listings/${id}`);
+}))
+
+
 // show route
 app.get("/listings/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
-    let listing = await Listing.findById(id);
+    let listing = await Listing.findById(id).populate("reviews");
     res.render("listings/show.ejs", { listing });
 }))
 
