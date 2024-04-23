@@ -137,10 +137,12 @@ textarea{
     margin-right: 10px;
 }
 .edit-btn{
-    background-color: #ffcc00 !important;
-    border: none !important;
+    border: 2px solid #bb9602 !important;
+    background-color: transparent !important;
+    color: #bb9602 !important;
 }
 .del-btn{
-    background-color: darkred !important;
-    border: none !important;
+    border: 2px solid darkred !important;
+    background-color: transparent !important;
+    color: darkred !important;
 }
