@@ -7,35 +7,35 @@
                 <form method="post" action="/listings" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" name="title" class="form-control" required>
+                        <input type="text" name="listing[title]" class="form-control" required>
                         <div class="invalid-feedback">Enter a valid title</div>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea name="description" id="" cols="30" rows="5" class="form-control" required></textarea>
+                        <textarea name="listing[description]" id="" cols="30" rows="5" class="form-control" required></textarea>
                         <div class="invalid-feedback">Please enter a short description</div>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image URL/Link</label>
-                        <input type="text" name="image" class="form-control">
+                        <input type="text" name="listing[image]" class="form-control">
                     </div>
 
                     <div class="row">
                         <div class="mb-3 col-md-4">
                             <label for="price" class="form-label">Price</label>
-                            <input type="text" name="price" class="form-control" required>
+                            <input type="text" name="listing[price]" class="form-control" required>
                             <div class="invalid-feedback">Price should be valid</div>
                         </div>
                         <div class="mb-3 col-md-8">
                             <label for="country" class="form-label">Country</label>
-                            <input type="text" name="country" class="form-control" required>
+                            <input type="text" name="listing[country]" class="form-control" required>
                             <div class="invalid-feedback">Country should be valid</div>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="location" class="form-label">Location</label>
-                        <input type="text" name="location" class="form-control" required>
+                        <input type="text" name="listing[location]" class="form-control" required>
                         <div class="invalid-feedback">Location should be valid</div>
                     </div>
                     <div class="mb-3">
