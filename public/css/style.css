@@ -17,8 +17,12 @@ body{
     flex: 1;
 }
 
-
 /* ********************************** Navbar ********************************** */
+
+.nav-align{
+    flex-wrap: nowrap !important;
+}
+
 .navbar {
     height: 5rem;
     background: #fff;
@@ -31,8 +35,24 @@ body{
 
 .nav-link {
     color: #222222 !important;
-    font-weight: bold !important;
+    font-weight: 500 !important;
     font-size: 1.1rem !important;
+}
+
+
+.search-btn{
+    background-color: #fe424d !important;
+    color: white !important;
+    border-radius: 25px !important;
+}
+.search-btn i{
+    display: inline !important;
+    margin-right: 0.5rem;
+}
+.search-inp{
+    border-radius: 25px !important;
+    padding: 0.5rem 3rem 0.5rem 3rem !important;
+    font-size: 1rem !important;
 }
 
 

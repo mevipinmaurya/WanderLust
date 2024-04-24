@@ -7,18 +7,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/listings">All Listings</a>
-                <a class="nav-link" href="/listings/new">Add New Listings</a>
+                <a class="nav-link" href="/listings">Explore</a>
             </div>
             <div class="navbar-nav ms-auto">
+                <form class="d-flex nav-align" role="search">
+                    <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations">
+                    <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass nav-search-icon"></i>Search</button>
+                </form>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/listings/new">Airbnb your home</a>
                 <% if(!currUser) { %>
-                <a class="nav-link" href="/signup">Signup</a>
-                <a class="nav-link" href="/login">Login</a>
-                <% } %>
-                <% if(currUser) { %>
-                <a class="nav-link" href="/logout">Logout</a>
-                <% } %>
+                    <a class="nav-link" href="/signup"><b>Signup</b></a>
+                    <a class="nav-link" href="/login"><b>Login</b></a>
+                    <% } %>
+                        <% if(currUser) { %>
+                            <a class="nav-link" href="/logout"><b>Logout</b></a>
+                            <% } %>
             </div>
         </div>
     </div>

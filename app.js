@@ -45,11 +45,6 @@ const sessionOptions = {
 }
 
 
-app.get("/", (req, res) => {
-    res.send("Building a major Project")
-})
-
-
 app.use(session(sessionOptions))
 // Creating flash (connect-flash) (use after session)
 app.use(flash());
