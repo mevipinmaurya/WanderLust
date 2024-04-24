@@ -7,6 +7,7 @@ const ExpressError = require("../utils/ExpressError.js");
 // For server side validation (joi)
 const {reviewSchema} = require("../schema.js");
 const { isLoggedIn } = require("../middleware.js");
+const reviewController = require("../controllers/review.js");
 
 
 // For review validation
@@ -22,41 +23,11 @@ const validateReview = (req, res, next) => {
 
 
 // Post Review route
-router.post("/", isLoggedIn, validateReview, wrapAsync(async (req, res) => {
-    let { id } = req.params;
-    let listing = await Listing.findById(id);
-    // let { rating: newRating, comment: newComment } = req.body.review;
-    let newReview = new Review(req.body.review)
-    newReview.author = req.user._id;
-
-    listing.reviews.push(newReview);
-
-    await newReview.save();
-    await listing.save();
-
-    // console.log("Review saved");
-    // res.send("Review Saved");
-
-    req.flash("success", "New Review Added !");
-    res.redirect(`/listings/${id}`);
-}))
+router.post("/", isLoggedIn, validateReview, wrapAsync(reviewController.postReview))
 
 
 // Delete Review Route
-router.delete("/:reviewId", isLoggedIn, wrapAsync(async (req, res) => {
-    let { id, reviewId } = req.params;
-
-    let isReviewAuthor = await Review.findById(reviewId);
-    if (!isReviewAuthor.author.equals(res.locals.currUser._id)) {
-        req.flash("error", "You are not author of this review.");
-        return res.redirect(`/listings/${id}`);
-    }
-    await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
-    await Review.findByIdAndDelete(reviewId);
-
-    req.flash("success", "Review Deleted !");
-    res.redirect(`/listings/${id}`);
-}))
+router.delete("/:reviewId", isLoggedIn, wrapAsync(reviewController.destroyReview));
 
 
 module.exports = router;
